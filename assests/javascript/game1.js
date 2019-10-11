@@ -8,10 +8,7 @@ var answerArray = [];
 var wrongGuess = [];
 var wins = 0;
 var losses = 0;
-
-var leftGuesses = 10;
-var ele = document.getElementById('remaining');
-ele.innerHTML=leftGuesses;
+var leftGuesses = randomWord.length;
 
 for(var i = 0; i < word.length; i++){
     answerArray[i] = '_';
@@ -24,27 +21,20 @@ document.onkeyup = function(event) {
     for(var j = 0; j < randomWord.length; j++){
         if(randomWord[j]===userGuess){
             answerArray[j]=userGuess;
+            break;
         }
     }//END 2ND FOR LOOP 
 
     if(userGuess !== randomWord[j]){
         wrongGuess.push(userGuess);
         leftGuesses--;
-        var wg = document.getElementById('wrong');
-        wg.innerHTML=wrongGuesses;
     }
     if(leftGuesses == 0){
         console.log("You loser...")
     }
-    if(answerArray == randomWord){
+    if(userGuess == randomWord.length){
         console.log("You are so right!");
     }
-
-    var el = document.getElementById('guessword');
-    el.innerHTML=guessComposer.join(" ");
-
-    var ele = document.getElementById('remaining');
-    ele.innerHTML=guessesLeft;
 
     var winsText = document.getElementById("wins-text");
     var lossesText = document.getElementById("losses-text");
